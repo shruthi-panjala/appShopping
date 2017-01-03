@@ -23,6 +23,7 @@ var shop = require('./routes/shop');
 var checkout = require('./routes/checkout');
 var placeOrder = require('./routes/placeOrder');
 var tq = require('./routes/thankYou');
+var dummy = require('./routes/dummy');
 
 //var productAddCart = require('./routes/productAddCart');
 
@@ -42,6 +43,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
+
 app.use('/about', about);
 app.use('/men', shop);
 //app.use('/computers',productAddCart);
@@ -50,7 +52,7 @@ app.use('/checkout', checkout);
 app.use('/order', placeOrder);
 app.use('/tq', tq);
 
-
+app.use('/dummy', dummy);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

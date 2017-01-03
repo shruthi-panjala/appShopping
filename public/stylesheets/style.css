@@ -1,6 +1,6 @@
 body {
     font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
-  /*  background: url('../images/shop.jpg') no-repeat center center fixed;*/
+  /*background: url('../images/shop.jpg') no-repeat center center fixed;*/
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -157,7 +157,16 @@ font-weight: 700;
 }
 #product-menu:hover{
     background-color: aquamarine;
+     background-size: 200px;
+    transition: background-size 0.2s;
 }
+#product-menu {
+       /*transition: background-size 0.2s;
+       transition-timing-function: cubic-bezier(.07,1.41,.82,1.41);*/
+}
+/*.star:hover {
+    background-size: 20px;
+}*/
 
 /*#checkout-panel{
     margin-top: 20px;
@@ -196,3 +205,6 @@ textarea.customer,
     .uneditable-input.span6 {
         width: 450px;
     }
+#customer-login{
+    display: none;
+}

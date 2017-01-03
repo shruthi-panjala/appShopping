@@ -14,7 +14,7 @@ router.get('/', function(req, res, next) {
             productChunks.push(docs.slice(i, i+chunkSize));
             
         }
-         res.render('index', { title: 'Shop Online',
+         res.render('dummy', { title: 'Shop Online',layout: "noFooter",
                          products: productChunks
                    
                       });
