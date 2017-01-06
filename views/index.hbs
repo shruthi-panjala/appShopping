@@ -2,7 +2,12 @@
 <div class="container">
 <h1>{{title}}</h1>
 <p>Welcome to online shopping experience</p>
+    <div class="alert alert-success alert-dismissible" id="alertMsg" style="display:none;">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Hey!</strong> Item has already added to wishlist..!
+  </div>
 </div>
+
 
 <!--loop through all products-->
 <div class="container">
@@ -20,8 +25,9 @@
           <div class="clearfix">
               <p><span style=" font-weight: 700;">Rs.{{this.price}}</span></p>
               <a href="#" class=" pull-right">
-                  <span style="color:#A4A49D;"><i class="fa fa-gratipay fa-2x" aria-hidden="true"></i></span></a>
-              <!--<a href="/checkout" class="btn btn-success pull-right" role="button"><i class="fa fa-shopping-cart pull-left" aria-hidden="true">Add to cart</i></a>-->
+                  <button type="submit" class="btn btn-inverse btn-circle btn-lg" name="addToWish" id="addToWish" value="" onclick="wishListCounter('{{this._id}}')">
+                      <i class="glyphicon glyphicon-heart"></i><!--<i class="fa fa-gratipay fa-2x" aria-hidden="true"></i>--></button></a>
+              <a href="/add-to-cart/{{this.title}}" class="btn btn-success pull-right" role="button"><i class="fa fa-shopping-cart pull-left" aria-hidden="true">Add to cart</i></a>
       </div>
           </div>
     </div>

@@ -51,9 +51,11 @@
 							<ul class="nav navbar-nav">
                                 <!--<li><a href="/about"><i class="fa fa-user"></i> About</a></li>-->
 								<li><a href="/about"><i class="fa fa-user"></i> Account</a></li>
-								<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
+								<li ><a href="#"><i class="fa fa-star"></i> Wishlist<span id="wishlistCount"></span></a></li>
 								<li><a href=""><i class="fa fa-crosshairs"></i> Checkout</a></li>
-								<li><a href=""><i class="fa fa-shopping-cart"></i> Cart</a></li>
+								<li><a href="/checkout"><i class="fa fa-shopping-cart"></i> Cart</a>
+                                <span class="badge" style="">{{session.cart.totalQty}}</span>
+                                </li>
 								<li><a href="#"><i class="fa fa-lock"></i> Login</a></li>
 							</ul>
                             </div>
@@ -62,16 +64,4 @@
 				</div>
 			</div>
 <!--		</div>/header-middle-->
-    
-    <div class="site-branding-area">
-        <div class="well">
-            <div class="row">
-               
-                <p align="center"> site branding area tell some name.......!</p>
-            </div>
-        </div>
-    </div> <!-- End site branding area -->
-    
-   
-
 </header>

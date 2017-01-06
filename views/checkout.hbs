@@ -1,5 +1,6 @@
 <div class="container">
 <h2 align="center">Cart items</h2>
+    
     <div class="row">
     <div class="col-md-12 col-sm-12">
         <div class="panel panel-primary">
@@ -17,20 +18,23 @@
             </div>
         </div>
         <div class="panel-body">
+            {{# if products}}
    <div class="row">
-       {{#each cartProducts}}
+       {{#each products}}
             <div class="col-md-2"><!-- image div -->
-       <img src="{{this.url}}" id="images" alt="No picture available">
+               
+       <img src="{{this.item.url}}" id="images" alt="No picture available">
+                  
        </div>
        <div class="col-md-4"><!-- product details-->
-       <h4><span style="text-transform: none;">{{this.title}}</span></h4>
+       <h4><span style="text-transform: none;">{{this.item.title}}</span></h4>
        </div>
        <div class="col-md-6">
        <div class="col-md-6 text-right">
 								<h6><strong>Rs.{{this.price}} <span class="text-muted">x</span></strong></h6>
 							</div>
 							<div class="col-md-4">
-								<input type="text" class="form-control input-sm" value="1">
+								<input type="text" class="form-control input-sm" value={{this.qty}}>
 							</div>
 							<div class="col-md-2">
 								<button type="button" class="btn btn-link btn-xs">
@@ -38,15 +42,23 @@
 								</button>
        </div>
             </div>
+       
   </div>
+            
             {{/each}}
+            <div class="row text-center">
+						<div class="col-xs-9">
+							<h4 class="text-right">Total <strong>{{totalPrice}}</strong></h4>
+						</div>
     </div>
         	<div class="panel-footer">
 					<div class="row text-center">
+<!--
 						<div class="col-xs-9">
 							<h4 class="text-right">Total <strong>Rs.234</strong></h4>
 						</div>
-						<div class="col-xs-3">
+-->
+						<div class="col-xs-3 pull-right">
 							<button type="button" class="btn btn-success btn-block" onclick="location.href='/order'">
 								Checkout
 							</button>
@@ -54,47 +66,12 @@
 					</div>
 				</div>
 </div>
-        
-    <!-- dummy -->    
-      
-        
-    <!--    
-        
-         <div class="container">
-       <div class="col-xs-12 col-sm-8 col-lg-9">
-            <div class="row">
-                <div class="col-xs-12 col-sm-4">
-                    <div class="step active">
-                        <div class="panel panel-primary">
-                        <div class="panel-heading">
-                        <span class="glyphicon glyphicon-home"></span> 
-                        Adress
-                           
-                        <div class="hidden-xs caret right"></div>
-                        <div class="visible-xs caret bottom"></div>
-                            </div>                                
-
-                    </div> 
-                        </div>
-                </div>column ending
-        
-                <div class="col-xs-12 col-sm-4">
-                    <div class="step">
-                            <span class="glyphicon glyphicon-usd"></span> 
-                            Bezahlen
-                            <div class="hidden-xs caret right"></div>
-                        <div class="visible-xs caret bottom"></div>
-                    </div>
-                </div>
-            
-                <div class="col-xs-12 col-sm-4">
-                    <div class="step">
-                        <span class="glyphicon glyphicon-ok"></span> 
-                        Bestätigen 
-                        <div class="hidden-xs caret right"></div>
-                    </div>
-                </div>
-            </div>            
-        </div>
-
-</div>-->
+    </div>
+    {{else}}
+        <div class="container"> <div class="alert alert-success alert-dismissible" id="alertMsg" style="display:none;">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Hey!</strong> No items in wishlist....!
+  </div></div>
+    {{/if}}
+</div>
+   

@@ -29,7 +29,8 @@
         <input type="radio" value="2" name="register" id="new" onclick="flowFunc(this);" />
       <label for="register">Guest checkout</label><br/>
           <!--<button class="btn btn-primary" role="button">Continue</button>-->
-          	<button type="submit" class="btn btn-inverse" data-toggle="#collapse" data-parent="#accordion" onclick="flowFunc();">Continue</button>
+          <span id="guestBtn"  style="display:none">
+          	<button type="submit" class="btn btn-inverse" data-toggle="collapse" data-parent="#accordion" href="#collapse2">Continue</button></span>
           </form>
                  </div>
 	</div>
@@ -40,16 +41,21 @@
                  <h4>Returning Customer</h4>
                  <p>I am a returning customer</p>
              <div class="form-group">
-      <form name="returningCustomer" action="#" method="post"> UserName<br/>
+      <form class="form-horizontal" name="returningCustomer" action="#" method="post"> 
+         <label class="control-label">UserName</label><br/>
+
         <input type="text" id="userName" name="userName" class="form-control" placeholder="Enter Username"
-               style="width: 300px; padding: 2px; border:1px solid black;" />
+               style="width: 300px; padding: 2px; border:1px solid black;" required="required" />
       <br/>
-           Password<br/>
-                <input type="text" id="password" name="password" class="form-control" placeholder="Enter Password" style="width: 300px; padding: 2px; border:1px solid black;"/>
+           <label class="control-label">Password</label><br/>
+
+                <input type="password" id="password" name="password" class="form-control" placeholder="Enter Password" 
+                       style="width: 300px; padding: 2px; border:1px solid black;" required />
       <br/>
       
           <!--<button class="btn btn-primary" role="button">Continue</button>-->
-          	<a data-toggle="collapse" data-parent="#accordion" href="#collapse2"><button type="submit" class="btn btn-inverse" data-toggle="#collapse" data-parent="#accordion">Continue</button></a>
+          	
+          	<button type="submit" class="btn btn-inverse" data-toggle="collapse" data-parent="#accordion" href="#collapse2" >Continue</button>
           	
           </form>
                  </div>
@@ -58,54 +64,71 @@
         </div>
     </div>
   </div>
+      
+      
+      
       <!-- end of one accordion -->
+      
+      
       
   <div class="panel panel-default">
     <div class="panel-heading">
          <span style="color: #D43653 ;">
       <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+        <a data-toggle="collapse" data-parent="#accordion" href="#">
         Account & Shipping Details</a>
       </h4>
         </span>
     </div>
     <div id="collapse2" class="panel-collapse collapse">
       <div class="panel-body">
-           <form class="form-horizontal">
-          	<div class="row-fluid">
+           <form class="form-horizontal" action="#" method="post">
+         
+               
+               
+               
+               <div class="row-fluid">
 		<div class="col-md-6 col-sm-6">									
 <h4>Your Personal Details</h4>
  
     <label class="control-label">First Name</label><br/>
-
-<input type="text" placeholder="" class="form-control" style="width:300px;"><br/>
-<label class="control-label">Last Name</label><br/>
-													
-<input type="text" placeholder="" class="form-control" style="width:300px;"><br/>			  
+<input type="text" id="firstname" placeholder="" class="form-control" style="width:300px;"><br/>
+            
+<label class="control-label">Last Name</label><br/>												
+<input type="text" id="lastname" placeholder="" class="form-control" style="width:300px;"><br/>	
+            
 <label class="control-label">Email Address</label><br/>
-<input type="text" placeholder="" class="form-control" style="width:300px;"><br/>
+<input type="text" id="email" placeholder="" class="form-control" style="width:300px;"><br/>
+            
 <label class="control-label">Telephone</label><br/>
-                 <input type="text" placeholder="" class="form-control" style="width:300px;"><br/>
-													<label class="control-label">Fax</label><br/>
-									<input type="text" placeholder="" class="form-control" style="width:300px;"><br/>
+<input type="text" id="telephone" placeholder="" class="form-control" style="width:300px;"><br/>
+            
+<label class="control-label">Fax</label><br/>
+<input type="text" id="fax" placeholder="" class="form-control" style="width:300px;"><br/>
 				
 					</div>
-                <!--end of one column-->
+                <!--*************************************end of one column***************************************************-->
                 <div class="col-md-6 col-sm-6">
                 		<h4>Your Address</h4>
+                    
 <label class="control-label">Company</label><br/>
-<input type="text" placeholder="" class="form-control" style="width:300px;"><br/>
-	<label class="control-label">Company ID:</label><br/>
-<input type="text" placeholder="" class="form-control" style="width:300px;"><br/>
+<input type="text" id="company" placeholder="" class="form-control" style="width:300px;"><br/>
+                    
+<label class="control-label">Company ID:</label><br/>
+<input type="text" id="cid" placeholder="" class="form-control" style="width:300px;"><br/>
+                    
 <label class="control-label"><span class="required">*</span> Address 1:</label><br/>
-<input type="text" placeholder="" class="form-control" style="width:300px;" required="required"><br/>
+<input type="text" id="add1" placeholder="" class="form-control" style="width:300px;" required="required"><br/>
+                    
 <label class="control-label">Address 2:</label><br/>
-<input type="text" placeholder="" class="form-control" style="width:300px;"><br/>
+<input type="text" id="add2" placeholder="" class="form-control" style="width:300px;"><br/>
 
-  <!-- <label class="control-label"><span class="required">*</span> Country:</label><br/>-->
+<label class="control-label"><span class="required">*</span> Country:</label><br/>
                     <div class="dropdown">
 					
+<!--
 						<label for="entercountry"><span class="required">*</span>Country</label>
+-->
 						<select Name="Country" id="country" class="form-control"  onchange="cityChange(this);">
 						<option value="empty">Select Country</option>
 								<option value="India">India</option>
@@ -115,23 +138,23 @@
 								<option value="Iceland">Iceland</option>
 						</select>
                         <label for="entercity"><span class="required">*</span>Region/state</label>
-						<select name="City" id="City" class="form-control">
+						<select name="City" id="region" class="form-control">
 								<span style="display: block; width: 5em;">
 								<option value="0">Select Region</option>
-									<!-- <option value="Hyderabad">Hyderabad</option>
+									<option value="Hyderabad">Hyderabad</option>
 									<option value="Basel">Basel</option>
 									<option value="Rome">Rome</option>
 									<option value="Paris">Paris</option>
-									<option value="Akranes">Akranes</option> -->
+									<option value="Akranes">Akranes</option> 
 							</span>
 						</select>
 					
 				</div>
                     <label class="control-label"><span class="required">*</span> City:</label><br/>
-<input type="text" placeholder="" class="form-control" style="width:300px;" required="required"><br/>
+<input type="text" id="city" placeholder="" class="form-control" style="width:300px;" required="required"><br/>
                     <label class="control-label"><span class="required">*</span> Post Code:</label><br/>
-<input type="text" placeholder="" class="form-control" style="width:300px;" required="required"><br/>	
-                    <button type="submit" class="btn btn-inverse" data-toggle="#accordion" data-parent="#collapse3">Continue</button>
+<input type="text" id="postcode" placeholder="" class="form-control" style="width:300px;" required="required"><br/>	
+                    <button type="submit" class="btn btn-inverse"   data-toggle="collapse" data-parent="#accordion" href="#collapse3" onclick="insert()">Continue</button>
                 </div>
           </div>
           </form>	
@@ -142,7 +165,7 @@
     <div class="panel-heading">
          <span style="color: #D43653 ;">
       <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+        <a data-toggle="collapse" data-parent="#accordion" href="#">
         Payment Method</a>
       </h4>
         </span>
@@ -214,26 +237,26 @@
                             </div>
                             <div class="col-xs-5 col-md-5 pull-right">
                                 <div class="form-group">
-                                    <label for="cardCVC">CV CODE</label>
+                                    <label for="cardCVC">CVV</label>
                                     <input 
                                         type="tel" 
                                         class="form-control"
                                         name="cardCVC"
-                                        placeholder="CVC"
+                                        placeholder="CVV"
                                         autocomplete="cc-csc"
                                         required
                                     />
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        <!--<div class="row">
                             <div class="col-xs-12">
                                 <div class="form-group">
                                     <label for="couponCode">COUPON CODE</label>
                                     <input type="text" class="form-control" name="couponCode" />
                                 </div>
                             </div>                        
-                        </div>
+                        </div>-->
                         <div class="row">
                             <div class="col-xs-12">
                                 <button class="subscribe btn btn-success btn-lg btn-block" type="button">Make Payment</button>

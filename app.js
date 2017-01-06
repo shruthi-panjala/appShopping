@@ -8,6 +8,16 @@ var expressHbs = require('express-handlebars');
 /*var  mongoose = require('mongoose');*/
 var mongojs= require('mongojs');
 var db = mongojs('shop', ['shop']);
+
+//session related stuff....
+var session=require('express-session');
+var passport=require('passport');
+var flash=require('connect-flash');
+require('./config/passport');
+var MongoStore=require('connect-mongo')(session);
+
+
+//--------------------
 var app = express();
 /*app.get('/',function(req,res){
     console.log("i received get request");
@@ -40,7 +50,38 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+//session--------------------------
+app.use(session
+        ({
+        secret: 'mysupersecret', 
+      resave:false,
+     saveUnintialized: false,
+     store: new MongoStore({
+         host: '127.0.0.1',
+        port: '27017',
+        db: 'shop',
+        url: 'mongodb://localhost:27017/shop'
+        }),
+     cookie:{maxAge: 180*60*1000}
+                })
+       );
+app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
+//----------------------------------------
+
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(function(req,res, next){
+    res.locals.login=req.isAuthenticated();
+    //making session variable to be available in all views
+    res.locals.session=req.session;
+    next();
+});
+
+//-------------------------------------------------------
+
+
 
 app.use('/', index);
 
@@ -71,5 +112,8 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+//************************************
+
 
 module.exports = app;
